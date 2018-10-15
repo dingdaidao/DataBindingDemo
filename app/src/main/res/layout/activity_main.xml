@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="user"
+            type="com.example.ding.databindingdemo.User" />
+        <variable
+            name="act"
+            type="com.example.ding.databindingdemo.MainActivity"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.name}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.age+``}" />
+        <Button
+            android:id="@+id/main_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="按鈕"
+            android:onClick="@{()->act.btn(user.name)}"/>
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/main_srl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/main_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </android.support.v4.widget.SwipeRefreshLayout>
+    </LinearLayout>
+
+</layout>
