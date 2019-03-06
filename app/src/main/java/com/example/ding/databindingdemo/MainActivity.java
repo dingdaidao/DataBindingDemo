@@ -14,18 +14,22 @@ import com.example.ding.databindingdemo.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding mBinding;
+    private User mUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mBinding = DataBindingUtil.setContentView(this,R.layout.activity_main);
-        mBinding.setVariable(BR.user,new User());
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+
+        mUser = new User();
+        mBinding.setVariable(BR.user, mUser);
         //或者
-        mBinding.setUser(new User());
-        mBinding.setVariable(BR.act,this);
+        mBinding.setUser(mUser);
+        mBinding.setVariable(BR.act, this);
         mBinding.executePendingBindings();
     }
-    public void btn(String name){
-        Toast.makeText(this,name,Toast.LENGTH_SHORT).show();
+
+    public void btn(String name) {
+        Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
     }
 }
